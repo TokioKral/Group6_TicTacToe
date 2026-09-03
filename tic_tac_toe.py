@@ -7,10 +7,6 @@
 # Hi Britt
 # Hi Zina
 
-# Function for ... (displaying the board?)
-def blabla():
-    pass
-
 # Function for ... (naming the players)
 def player_name():
     player1 = input("Write your Playername here: ")
@@ -27,6 +23,19 @@ def choose_first_player(p1, p2):
     print(f" {first} starts!")
     return first
 
+def create_matrix():
+    matrix = []
+
+    for i in range(3):
+        matrix.append(["", "", ""])
+
+    return matrix
+
+def print_matrix(matrix):
+    for row in matrix:
+        print(" | ".join(row))
+        print("---------")
+
 
 # ... write as many functions as you need
 
@@ -37,3 +46,6 @@ if __name__ == "__main__":
     print("Welcome to a new round of Tic-Tac-Toe!")
     p1, p2 = player_name()
     first_player = choose_first_player(p1, p2)
+
+    matrix = create_matrix()
+    print_matrix(matrix)
