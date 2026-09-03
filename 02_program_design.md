@@ -185,6 +185,24 @@ Example User Stories for Tic-Tac-Toe:
 > As a player, I want to be notified when the game ends so that I know whether
 > I won, lost, or the game ended in a draw.
 
+### User Story for This Game
+
+> As one of two players, I want to enter our names and play a simple game of
+> Tic-Tac-Toe on a 3x3 board, so that we can take turns using `X` and `O`, see
+> the winner, and continue playing new rounds together.
+
+#### Acceptance Criteria
+
+* The program asks both players for their names before the game starts.
+* The program randomly chooses which player takes the first turn.
+* The board is a 3x3 matrix, and players can place only `X` or `O` markers.
+* The current board is displayed using the simplest clear output after moves.
+* The program announces the winner, or announces a draw when the board is full.
+* After a round ends, the program automatically starts another round instead of
+  stopping after the first round.
+* The game stops at any time when a player enters `EXIT`.
+* The board is implemented as a nested list in Python.
+
 ## Further Reading & Resources
 
 * [**Class Diagram**](https://www.tutorialspoint.com/uml/uml_class_diagram.htm)

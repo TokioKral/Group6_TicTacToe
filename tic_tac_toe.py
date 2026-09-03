@@ -7,10 +7,21 @@
 def blabla():
     pass
 
+# Function for ... (naming the players)
+def player_name():
+    player1 = input("Write your Playername here: ")
+    player2 = input("Write your Playername here: ")
+    print("Player 1 is: " + player1)
+    print("Player 2 is: " + player2)
+    return player1, player2
 
 # Function for... (choosing a player?)
-def blablabla():
-    pass
+import random
+
+def choose_first_player(p1, p2):
+    first = random.choice([p1, p2])
+    print(f" {first} starts!")
+    return first
 
 
 # ... write as many functions as you need
@@ -20,3 +31,5 @@ def blablabla():
 if __name__ == "__main__":
     # Start a new round of Tic-tac-toe
     print("Welcome to a new round of Tic-Tac-Toe!")
+    p1, p2 = player_name()
+    first_player = choose_first_player(p1, p2)
