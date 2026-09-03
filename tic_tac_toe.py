@@ -36,9 +36,29 @@ def print_matrix(matrix):
         print(" | ".join(row))
         print("---------")
 
+def player_input(player):
+    print(f"{player}, it's your turn!")
 
-# ... write as many functions as you need
+    row = int(input("Choose a row (1-3): "))
+    column = int(input("Choose a column (1-3): "))
 
+    return row, column
+
+def update_matrix(matrix, row, column, symbol):
+    matrix[row - 1][column - 1] = symbol
+    return matrix
+
+def field_is_free(matrix, row, column):
+    return matrix[row - 1][column - 1] == ""
+
+def get_valid_move(matrix, player):
+    while True:
+        row, column = player_input(player)
+
+        if matrix[row - 1][column - 1] == "":
+            return row, column
+
+        print("This field is already occupied. Choose another one.")
 
 # Tic-tac-toe game
 if __name__ == "__main__":
@@ -49,3 +69,8 @@ if __name__ == "__main__":
 
     matrix = create_matrix()
     print_matrix(matrix)
+
+    row, column = get_valid_move(matrix, first_player)
+    matrix = update_matrix(matrix, row, column, "X")   
+
+    print_matrix(matrix) 
