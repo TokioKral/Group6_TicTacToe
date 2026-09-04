@@ -60,17 +60,71 @@ def get_valid_move(matrix, player):
 
         print("This field is already occupied. Choose another one.")
 
+def check_winner(matrix, symbol):
+    # Check rows
+    for row in matrix:
+        if row[0] == symbol and row[1] == symbol and row[2] == symbol:
+            return True
+
+    # Check columns
+    for column in range(3):
+        if (matrix[0][column] == symbol and
+            matrix[1][column] == symbol and
+            matrix[2][column] == symbol):
+            return True
+
+    # Check diagonal
+    if (matrix[0][0] == symbol and
+        matrix[1][1] == symbol and
+        matrix[2][2] == symbol):
+        return True
+
+    if (matrix[0][2] == symbol and
+        matrix[1][1] == symbol and
+        matrix[2][0] == symbol):
+        return True
+
+    return False
 # Tic-tac-toe game
 if __name__ == "__main__":
-    # Start a new round of Tic-tac-toe
     print("Welcome to a new round of Tic-Tac-Toe!")
+
     p1, p2 = player_name()
     first_player = choose_first_player(p1, p2)
 
     matrix = create_matrix()
-    print_matrix(matrix)
 
-    row, column = get_valid_move(matrix, first_player)
-    matrix = update_matrix(matrix, row, column, "X")   
+    # Find the second player
+    if first_player == p1:
+        second_player = p2
+    else:
+        second_player = p1
 
-    print_matrix(matrix) 
+    current_player = first_player
+
+    # Play up to 9 turns
+    for turn in range(9):
+
+        print_matrix(matrix)
+
+        row, column = get_valid_move(matrix, current_player)
+
+        # Give X to the first player and O to the second player
+        if current_player == first_player:
+            symbol = "X"
+        else:
+            symbol = "O"
+
+        matrix = update_matrix(matrix, row, column, symbol)
+
+        # Check if the player won
+        if check_winner(matrix, symbol):
+            print_matrix(matrix)
+            print(f"{current_player} wins!")
+            break
+
+        # Switch player
+        if current_player == first_player:
+            current_player = second_player
+        else:
+            current_player = first_player
